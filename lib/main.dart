@@ -5,6 +5,7 @@ import 'package:trainee/configs/pages/main_page.dart';
 import 'package:trainee/configs/routes/main_route.dart';
 import 'package:trainee/configs/themes/main_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -14,7 +15,14 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  await SentryFlutter.init(
+    (options) {
+      options.dsn =
+          'https://86e887d5dc9744c090e86f9b303e8d44@o4505368078254080.ingest.sentry.io/4505368079499264';
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
