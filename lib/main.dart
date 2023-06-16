@@ -6,6 +6,7 @@ import 'package:trainee/configs/routes/main_route.dart';
 import 'package:trainee/configs/themes/main_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:trainee/modules/global_binddings/global_bindding.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
           theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: MainPage.main,
+          initialBinding: GlobalBindding(),
         );
       },
     );
