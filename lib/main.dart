@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'Trainee Sekeleton',
           debugShowCheckedModeBanner: false,
-          initialRoute: MainRoute.checkout,
+          initialRoute: MainRoute.order,
           theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: MainPage.main,
