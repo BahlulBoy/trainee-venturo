@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:trainee/configs/pages/main_page.dart';
 import 'package:trainee/configs/routes/main_route.dart';
 import 'package:trainee/configs/themes/main_theme.dart';
@@ -12,10 +14,16 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  /// Localstorage init
+  await Hive.initFlutter();
+  await Hive.openBox("venturo");
+
+  /// Firebase init
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  /// Sentry init
   await SentryFlutter.init(
     (options) {
       options.dsn =
@@ -38,12 +46,13 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           title: 'Trainee Sekeleton',
+          initialBinding: GlobalBindding(),
           debugShowCheckedModeBanner: false,
-          initialRoute: MainRoute.initial,
+          initialRoute: MainRoute.signIn,
           theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: MainPage.main,
-          initialBinding: GlobalBindding(),
+          builder: EasyLoading.init(),
         );
       },
     );
