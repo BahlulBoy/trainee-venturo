@@ -3,15 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../checkout/view/components/quantity_counter.dart';
+
 class MenuCard extends StatelessWidget {
   final Map<String, dynamic> menu;
   final bool isSelected;
+  final int? quantity;
+  final void Function()? onIncrement;
+  final void Function()? onDecrement;
   final void Function()? onTap;
 
   const MenuCard({
     Key? key,
     required this.menu,
     this.onTap,
+    this.onIncrement,
+    this.onDecrement,
+    this.quantity,
     this.isSelected = false,
   }) : super(key: key);
 
@@ -79,6 +87,21 @@ class MenuCard extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                 ],
+              ),
+            ),
+
+            // qty counter
+            Container(
+              height: 75.r,
+              padding: EdgeInsets.only(left: 12.r, right: 5.r),
+              child: InkWell(
+                onTap: () {},
+                splashFactory: NoSplash.splashFactory,
+                child: QuantityCounter(
+                  quantity: quantity ?? 0,
+                  onIncrement: onIncrement,
+                  onDecrement: onDecrement,
+                ),
               ),
             ),
           ],

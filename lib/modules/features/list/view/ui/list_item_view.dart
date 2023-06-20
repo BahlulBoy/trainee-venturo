@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,15 +7,21 @@ import 'package:trainee/modules/features/list/controllers/list_controller.dart';
 import 'package:trainee/modules/features/list/view/components/menu_card.dart';
 import 'package:trainee/modules/features/list/view/components/promo_card.dart';
 
-import 'components/menu_chip.dart';
-import 'components/search_app_bar.dart';
-import 'components/section_header.dart';
+import '../components/menu_chip.dart';
+import '../components/search_app_bar.dart';
+import '../components/section_header.dart';
 
 class ListItemView extends StatelessWidget {
   const ListItemView({super.key});
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
   Widget build(BuildContext context) {
+    analytics.setCurrentScreen(
+      screenName: 'List Item Screen',
+      screenClassOverride: 'Trainee',
+    );
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[100],
