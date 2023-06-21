@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:trainee/configs/themes/main_color.dart';
 import 'package:trainee/constants/commons/asset_const.dart';
 import 'package:trainee/modules/features/profile/controllers/profile_controller.dart';
+import 'package:trainee/shared/widgets/tile_option.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -129,6 +130,116 @@ class ProfileView extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+            ),
+            18.verticalSpacingRadius,
+
+            /// Info akun
+            Padding(
+              padding: EdgeInsets.only(left: 20.r),
+              child: Text(
+                'Account info'.tr,
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: MainColor.blueColor,
+                ),
+              ),
+            ),
+            14.verticalSpacingRadius,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 21.r, vertical: 30.r),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.r),
+                  color: MainColor.lightColor2),
+              child: Column(
+                children: [
+                  TileOption(title: 'Name'.tr, message: "Admin"),
+                  const Divider(),
+                  TileOption(title: 'Birth date'.tr, message: "01/02/2003"),
+                  const Divider(),
+                  TileOption(title: 'Phone number'.tr, message: "088888888888"),
+                  const Divider(),
+                  TileOption(title: 'Email'.tr, message: "Admin@gmail.com"),
+                  const Divider(),
+                  TileOption(title: 'Change PIN'.tr, message: "******"),
+                  const Divider(),
+                  TileOption(title: 'Change language'.tr, message: "English")
+                ],
+              ),
+            ),
+            16.verticalSpacingRadius,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 21.r, vertical: 14.r),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.r),
+                  color: MainColor.lightColor2),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(AssetConst.icReview),
+                            9.horizontalSpaceRadius,
+                            Text(
+                              'Rating',
+                              style: Get.textTheme.titleSmall,
+                            )
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: MainColor.primary,
+                            elevation: 3,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  color: MainColor.white, width: 1),
+                              borderRadius: BorderRadius.circular(24),
+                            )),
+                        child: Text("Rate Now".tr),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            27.verticalSpacingRadius,
+
+            /// Other Info
+            Padding(
+              padding: EdgeInsets.only(left: 20.r),
+              child: Text(
+                'Other info'.tr,
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: MainColor.blueColor,
+                ),
+              ),
+            ),
+            14.verticalSpacingRadius,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 30.r),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.r),
+                  color: MainColor.lightColor2),
+              child: Column(
+                children: [
+                  Obx(() => TileOption(
+                      title: 'Device Info',
+                      message: ProfileController.to.deviceModel.value)),
+                  const Divider(),
+                  Obx(() => TileOption(
+                      title: 'Device Version',
+                      message: ProfileController.to.deviceVersion.value))
+                ],
               ),
             ),
           ],
