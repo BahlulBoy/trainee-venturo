@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:trainee/configs/localization/localization.dart';
 import 'package:trainee/configs/pages/main_page.dart';
 import 'package:trainee/configs/routes/main_route.dart';
 import 'package:trainee/configs/themes/main_theme.dart';
@@ -42,6 +44,15 @@ class MyApp extends StatelessWidget {
           theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: MainPage.main,
+          translations: Localization(),
+          locale: Localization.defaultLocale,
+          fallbackLocale: Localization.fallbackLocale,
+          supportedLocales: Localization.locales,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
         );
       },
     );

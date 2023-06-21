@@ -7,12 +7,9 @@ class AssetConst {
   static const String iconJavaCode = 'assets/images/ic_java_code.png';
   static const String bgProfile = 'assets/images/bg_profile.png';
 
-
-
   /// Svg
   static const String icKTP = 'assets/svg/ic_ktp.svg';
   static const String icReview = 'assets/svg/ic_review.svg';
-
+  static const String flagID = 'assets/svg/flag_id.svg';
+  static const String flagEN = 'assets/svg/flag_en.svg';
 }
-
-

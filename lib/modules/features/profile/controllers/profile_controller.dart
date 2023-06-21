@@ -2,12 +2,16 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trainee/configs/themes/main_color.dart';
 import 'package:trainee/shared/widgets/image_picker_dialog.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+
+import '../../../../configs/localization/localization.dart';
+import '../views/components/language_bottom_sheet.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get to => Get.find();
@@ -16,6 +20,7 @@ class ProfileController extends GetxController {
   RxString deviceModel = ''.obs;
   RxString deviceVersion = ''.obs;
   RxBool isVerif = false.obs;
+  RxString currentLang = Localization.currentLanguage.obs;
 
   File? get imageFile => _imageFile.value;
 
@@ -73,6 +78,7 @@ class ProfileController extends GetxController {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       File file = File(result.files.single.path!);
+
       /// Selanjutnya apa yang ingin diinginkan
       isVerif.value = true;
     }
@@ -83,5 +89,23 @@ class ProfileController extends GetxController {
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
     deviceModel.value = androidInfo.model;
     deviceVersion.value = androidInfo.version.release;
+  }
+
+  Future<void> updateLanguage() async {
+    String? language = await Get.bottomSheet(
+      const LanguageBottomSheet(),
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(30.r),
+        ),
+      ),
+      isScrollControlled: true,
+    );
+
+    if (language != null) {
+      Localization.changeLocale(language);
+      currentLang(language);
+    }
   }
 }
