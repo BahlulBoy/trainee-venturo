@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trainee/configs/routes/main_route.dart';
 import 'package:trainee/configs/themes/main_color.dart';
 import 'package:trainee/modules/features/counter/controllers/conter_controller.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -29,6 +30,17 @@ class ConterView extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.offAllNamed(MainRoute.signIn);
+              },
+              icon: Icon(
+                Icons.logout,
+                size: 20.sp,
+              ),
+            ),
+          ],
         ),
         body: Container(
           padding: EdgeInsets.symmetric(
