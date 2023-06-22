@@ -4,4 +4,7 @@ abstract class MainRoute {
 
   /// Profile
   static const String profileView = '/profile';
+
+  /// Privacy Policy Web View
+  static const String privacyPolicy = '/privacy_policy';
 }

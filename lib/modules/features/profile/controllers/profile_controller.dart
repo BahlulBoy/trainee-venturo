@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:trainee/configs/routes/main_route.dart';
 import 'package:trainee/configs/themes/main_color.dart';
 import 'package:trainee/shared/widgets/image_picker_dialog.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -84,4 +85,9 @@ class ProfileController extends GetxController {
     deviceModel.value = androidInfo.model;
     deviceVersion.value = androidInfo.version.release;
   }
+
+  void privacyPolicyWebView() {
+    Get.toNamed(MainRoute.privacyPolicy);
+  }
+
 }

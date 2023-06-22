@@ -233,12 +233,17 @@ class ProfileView extends StatelessWidget {
               child: Column(
                 children: [
                   Obx(() => TileOption(
-                      title: 'Device Info',
+                      title: 'Device Info'.tr,
                       message: ProfileController.to.deviceModel.value)),
                   const Divider(),
                   Obx(() => TileOption(
-                      title: 'Device Version',
-                      message: ProfileController.to.deviceVersion.value))
+                      title: 'Device Version'.tr,
+                      message: ProfileController.to.deviceVersion.value)),
+                  TileOption(
+                    title: 'Privacy Policy'.tr,
+                    message: 'Here',
+                    onTap: ProfileController.to.privacyPolicyWebView,
+                  ),
                 ],
               ),
             ),
