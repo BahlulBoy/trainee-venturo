@@ -363,4 +363,9 @@ class ListRepository {
       'previous': offset > 0 ? true : null,
     };
   }
+
+  // Delete item
+  void deleteItem(int id) {
+    data.removeWhere((element) => element['id_menu'] == id);
+  }
 }

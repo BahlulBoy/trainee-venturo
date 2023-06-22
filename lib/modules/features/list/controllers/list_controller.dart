@@ -77,4 +77,17 @@ class ListController extends GetxController {
       return false;
     }
   }
+
+  Future<void> deleteItem(Map<String, dynamic> item) async {
+    try {
+      repository.deleteItem(item['id_menu']);
+      items.remove(item);
+      selectedItems.remove(item);
+    } catch (exception, stacktrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stacktrace,
+      );
+    }
+  }
 }

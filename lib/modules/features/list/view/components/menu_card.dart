@@ -31,14 +31,6 @@ class MenuCard extends StatelessWidget {
                 : Colors.transparent,
             width: 2.w,
           ),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black45,
-              offset: Offset(0, 2),
-              blurRadius: 8,
-              spreadRadius: -1,
-            ),
-          ],
         ),
         child: Row(
           children: [
