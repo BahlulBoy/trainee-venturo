@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           title: 'Trainee Sekeleton',
           initialBinding: GlobalBindding(),
           debugShowCheckedModeBanner: false,
-          initialRoute: MainRoute.signIn,
+          initialRoute: MainRoute.forgotPassword,
           theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: MainPage.main,
