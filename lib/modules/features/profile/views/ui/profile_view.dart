@@ -166,17 +166,25 @@ class ProfileView extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        TileOption(
-                          title: 'Name'.tr,
-                          message: 'User',
-                          onTap: () {},
-                        ),
+                        Obx(() => TileOption(
+                              title: 'Name'.tr,
+                              message:
+                                  ProfileController.to.user.value['nama'] ??
+                                      '-',
+                              onTap: () {
+                                ProfileController.to.updateProfileName();
+                              },
+                            )),
                         Divider(color: Colors.black45, height: 0.5.h),
-                        TileOption(
-                          title: 'Birth date'.tr,
-                          message: '-',
-                          onTap: () {},
-                        ),
+                        Obx(() => TileOption(
+                              title: 'Birth date'.tr,
+                              message: ProfileController
+                                      .to.user.value['tgl_lahir'] ??
+                                  '-',
+                              onTap: () {
+                                ProfileController.to.updateBirthDate();
+                              },
+                            )),
                         Divider(color: Colors.black45, height: 0.5.h),
                         TileOption(
                           title: 'Phone number'.tr,
