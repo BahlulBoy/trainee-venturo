@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
@@ -78,6 +79,7 @@ class ProfileController extends GetxController {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       File file = File(result.files.single.path!);
+      log(file.toString());
 
       /// Selanjutnya apa yang ingin diinginkan
       isVerif.value = true;
