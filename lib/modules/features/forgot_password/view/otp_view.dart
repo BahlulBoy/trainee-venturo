@@ -75,11 +75,11 @@ class OtpView extends StatelessWidget {
             // pin input
             Pinput(
               controller: OtpController.to.otpTextController,
-              length: 4,
+              length: 6,
               pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
               keyboardType: TextInputType.number,
               validator: (value) {
-                if (value != "1234") {
+                if (value != "123456") {
                   return "Kode OTP salah";
                 }
                 return null;
