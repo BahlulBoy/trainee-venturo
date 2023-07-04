@@ -91,7 +91,9 @@ class ForgotPasswordView extends StatelessWidget {
               SizedBox(height: 40.h),
               ElevatedButton(
                 style: EvelatedButtonStyle.mainRounded,
-                onPressed: () {},
+                onPressed: () {
+                  ForgotPasswordController.to.sendOtp();
+                },
                 child: Text(
                   "Ubah Password",
                   style: GoogleTextStyle.fw800.copyWith(
