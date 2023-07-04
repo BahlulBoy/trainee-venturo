@@ -30,6 +30,8 @@ void main() async {
 
   log((await FirebaseMessagingService.instance.getToken()).toString());
 
+  await FirebaseMessaging.instance.subscribeToTopic('order');
+
   await FirebaseMessagingService().initialize();
   FirebaseMessaging.onBackgroundMessage(
       FirebaseMessagingService.handleBackgroundNotif);
