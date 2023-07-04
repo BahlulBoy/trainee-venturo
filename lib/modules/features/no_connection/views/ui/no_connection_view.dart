@@ -68,9 +68,14 @@ class NoConnectionView extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  GlobalController.to.checkConnection();
+                  GlobalController.to.checkConnectionInPage();
                   if (GlobalController.to.isConnect.value == true) {
                     Get.offNamed(MainRoute.initial);
+                  } else {
+                    Get.snackbar(
+                      "Terjadi Kesalahan",
+                      "Koneksi masih belum tersambung",
+                    );
                   }
                 },
                 child: Row(
