@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -74,6 +75,7 @@ class ProfileController extends GetxController {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
     if (result != null) {
       File file = File(result.files.single.path!);
+
       /// Selanjutnya apa yang ingin diinginkan
       isVerif.value = true;
     }
@@ -90,4 +92,43 @@ class ProfileController extends GetxController {
     Get.toNamed(MainRoute.privacyPolicy);
   }
 
+  void setCookie() async {
+    // mendapatkan instance cookie manager
+    final cookieManager = CookieManager.instance();
+    // waktu berlaku (session) untuk cookie
+    final expiresDate =
+        DateTime.now().add(const Duration(days: 1)).millisecondsSinceEpoch;
+    // url sumber cookie yang akan disimpan
+    final url = Uri.parse("https://venturo.id");
+
+    // menyimpan cookie
+    await cookieManager.setCookie(
+      url: url,
+      name: "traineeCookie",
+      value: "trainee",
+      expiresDate: expiresDate,
+      isSecure: true,
+    );
+  }
+
+  Future<Cookie?> getCookie() async {
+    // mendapatkan instance cookie manager
+    final cookieManager = CookieManager.instance();
+    // url sumber cookie yang akan disimpan
+    final url = Uri.parse("https://venturo.id");
+    // mendapatkan cookie
+    Cookie? cookie =
+        await cookieManager.getCookie(url: url, name: "traineeCookie");
+
+    return cookie;
+  }
+
+  void deleteCookie() async {
+    // mendapatkan instance cookie manager
+    final cookieManager = CookieManager.instance();
+    // url sumber cookie yang akan dihapus
+    final url = Uri.parse("https://venturo.id");
+    // menghapus cookie
+    await cookieManager.deleteCookie(url: url, name: "traineeCookie");
+  }
 }
