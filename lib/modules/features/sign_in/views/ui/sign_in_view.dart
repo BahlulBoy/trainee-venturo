@@ -76,6 +76,20 @@ class SignInView extends StatelessWidget {
               ),
               SizedBox(height: 40.h),
               const FormSignInCompoent(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Lupa Password?",
+                    style: GoogleTextStyle.fw600.copyWith(
+                      fontSize: 14.sp,
+                      color: MainColor.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
               SizedBox(height: 40.h),
               ElevatedButton(
                 style: EvelatedButtonStyle.mainRounded,
