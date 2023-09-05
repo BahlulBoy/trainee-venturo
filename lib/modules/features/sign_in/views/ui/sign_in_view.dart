@@ -17,7 +17,7 @@ class SignIn extends StatelessWidget{
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.sizeOf(context).width * 0.567,
                   height: 155,
                   child: Image.asset(
