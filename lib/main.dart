@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: 'Trainee Sekeleton',
           debugShowCheckedModeBanner: false,
-          initialRoute: MainRoute.initial,
+          initialRoute: MainRoute.splash,
           theme: mainTheme,
           defaultTransition: Transition.native,
           getPages: MainPage.main,
