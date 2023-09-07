@@ -1,0 +1,5 @@
+class ApiConstant {
+  ApiConstant._();
+
+  static const String production = 'https://trainee.landa.id/javacode';
+}
